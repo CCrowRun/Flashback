@@ -48,7 +48,7 @@
                 An interactive flashcard app.
               </p>
               <div className='card-list'>
-                {this.state.cardData.map((card, index) => <Card key={index} front={card.front} />)}
+                {this.state.cardData.map((card, index) => <Card key={index} front={card.front} index={index} />)}
               </div>
               <div className='buttons'>
                 <button onClick={() => this.shuffleBackward()}>
@@ -72,8 +72,11 @@
         }
 
         flipCard = () => {
-          this.setState({ flipped: !this.state.flipped });
+          if (this.props.index === 0) {
+            this.setState({ flipped: !this.state.flipped });
+          }
         }
+        
         render() {
           return (
             <div className='Card -front' onClick={() => this.flipCard()}>
