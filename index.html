@@ -71,6 +71,12 @@
           };
         }
 
+        componentDidUpdate(prevProps, prevState) {
+          if (prevState.flipped === true) {
+            this.setState({ flipped: false });
+          }
+        }
+
         cardClass = () => this.state.flipped ? 'Card -back' : 'Card -front';
 
         flipCard = () => {
